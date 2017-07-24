@@ -14,11 +14,11 @@ var mw = multiWeatherProvider{
 }
 
 func main() {
-	http.HandleFunc("/temperature/", getTemperature)
+	http.HandleFunc("/weather/", getWeather)
 	http.ListenAndServe(":8080", nil)
 }
 
-func getTemperature(w http.ResponseWriter, r *http.Request) {
+func getWeather(w http.ResponseWriter, r *http.Request) {
 	begin := time.Now()
 	city := strings.SplitN(r.URL.Path, "/", 3)[2]
 	temp, error := mw.temperature(city)
