@@ -4,3 +4,34 @@
 # Weather
 API server for retrieving the weather of a particular city.
 This project is based on [this](http://howistart.org/posts/go/1/) tutorial.
+
+- [Motivation](#motivation)
+- [Usage](#usage)
+  - [Prerequisites](#prerequisites)
+  - [Build](#build)
+  - [Run](#run)
+- [License](#license)
+
+## Motivation
+I created this project to learn Go.
+
+## Usage
+This implementation uses a Docker container to isolate the execution environment.
+
+### Prerequisites
+- [Docker](https://docs.docker.com/engine/installation/)
+
+### Build
+Before interacting with the weather server, the Docker container must be built: ```docker build -t jeremymiller/weather .```
+
+### Run
+1. Start the weather server by executing the following command: ```docker run -it --rm jeremymiller/weather```
+2. Call the REST API for the city of your choice.  For example, using curl to check the weather in Tokyo:
+```
+$ curl http://localhost:8080/weather/tokyo
+{"city":"tokyo","temp":304.3,"took":"666.678077ms"}
+```
+*NOTE: The temperature is returned in Kelvin*
+
+## License
+[MIT](https://github.com/jeremy-miller/portals/blob/master/LICENSE)
