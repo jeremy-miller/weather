@@ -1,3 +1,4 @@
+[![Code Climate](https://codeclimate.com/github/jeremy-miller/weather/badges/gpa.svg)](https://codeclimate.com/github/jeremy-miller/weather)
 [![MIT Licensed](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/jeremy-miller/weather/blob/master/LICENSE)
 [![Go Version](https://img.shields.io/badge/Go-1.8.1-blue.svg)]()
 
