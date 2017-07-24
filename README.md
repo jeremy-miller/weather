@@ -11,6 +11,7 @@ This project is based on [this](http://howistart.org/posts/go/1/) tutorial.
   - [Prerequisites](#prerequisites)
   - [Build](#build)
   - [Run](#run)
+  - [Example Call](#example-call)
 - [License](#license)
 
 ## Motivation
@@ -27,7 +28,9 @@ Before interacting with the weather server, the Docker container must be built: 
 
 ### Run
 1. Start the weather server by executing the following command: ```docker run -it --rm jeremymiller/weather```
-2. Call the REST API for the city of your choice.  For example, using curl to check the weather in Tokyo:
+2. Call the REST API for the city of your choice to `http://localhost:8080/weather/<city>`
+
+### Example Call
 ```
 $ curl http://localhost:8080/weather/tokyo
 {"city":"tokyo","temp":304.3,"took":"666.678077ms"}
