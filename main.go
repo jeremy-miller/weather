@@ -8,12 +8,6 @@ import (
 	"time"
 )
 
-type weatherProvider interface {
-	temperature(city string) (float64, error) // in Kelvin
-}
-
-type multiWeatherProvider []weatherProvider
-
 var mw = multiWeatherProvider{
 	openWeatherMap{apiKey: "c97e896907f938993a8b424cc8e026e0"},
 }
@@ -39,10 +33,15 @@ func getWeather(w http.ResponseWriter, r *http.Request) {
 	})
 }
 
+type weatherProvider interface {
+	temperature(city string) (float64, error) // in Kelvin
+}
+
+type multiWeatherProvider []weatherProvider
+
 func (w multiWeatherProvider) temperature(city string) (float64, error) {
 	temps := make(chan float64, len(w))
 	errors := make(chan error, len(w))
-
 	for _, provider := range w {
 		go func(p weatherProvider) {
 			temp, error := p.temperature(city)
@@ -53,9 +52,7 @@ func (w multiWeatherProvider) temperature(city string) (float64, error) {
 			temps <- temp
 		}(provider)
 	}
-
 	sum := 0.0
-
 	for i := 0; i < len(w); i++ {
 		select {
 		case temp := <-temps:
@@ -64,7 +61,6 @@ func (w multiWeatherProvider) temperature(city string) (float64, error) {
 			return 0, error
 		}
 	}
-
 	return sum / float64(len(w)), nil
 }
 
