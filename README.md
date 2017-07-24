@@ -38,4 +38,4 @@ $ curl http://localhost:8080/weather/tokyo
 *NOTE: The temperature is returned in Kelvin*
 
 ## License
-[MIT](https://github.com/jeremy-miller/portals/blob/master/LICENSE)
+[MIT](https://github.com/jeremy-miller/weather/blob/master/LICENSE)
