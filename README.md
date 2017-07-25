@@ -31,7 +31,7 @@ Before interacting with the weather server, the Docker container must be built: 
 To run the Weather tests, execute the following command: ```docker run -it --rm jeremymiller/weather go test```
 
 ### Run
-1. Start the weather server by executing the following command: ```docker run -it --rm jeremymiller/weather```
+1. Start the weather server by executing the following command: ```docker run -it --rm -p 8080:8080 jeremymiller/weather```
 2. Call the REST API for the city of your choice to `http://localhost:8080/weather/<city>`
 
 ### Example Call
