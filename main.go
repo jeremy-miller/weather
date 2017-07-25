@@ -21,9 +21,9 @@ func main() {
 func getWeather(w http.ResponseWriter, r *http.Request) {
 	begin := time.Now()
 	city := strings.SplitN(r.URL.Path, "/", 3)[2]
-	temp, error := mw.temperature(city)
-	if error != nil {
-		http.Error(w, error.Error(), http.StatusInternalServerError)
+	temp, err := mw.temperature(city)
+	if err != nil {
+		http.Error(w, err.Error(), http.StatusInternalServerError)
 		return
 	}
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
@@ -46,9 +46,9 @@ func (w multiWeatherProvider) temperature(city string) (float64, error) {
 	errors := make(chan error, len(w))
 	for _, provider := range w {
 		go func(p weatherProvider) {
-			temp, error := p.temperature(city)
-			if error != nil {
-				errors <- error
+			temp, err := p.temperature(city)
+			if err != nil {
+				errors <- err
 				return
 			}
 			temps <- temp
@@ -59,8 +59,8 @@ func (w multiWeatherProvider) temperature(city string) (float64, error) {
 		select {
 		case temp := <-temps:
 			sum += temp
-		case error := <-errors:
-			return 0, error
+		case err := <-errors:
+			return 0, err
 		}
 	}
 	return sum / float64(len(w)), nil
@@ -71,9 +71,9 @@ type openWeatherMap struct {
 }
 
 func (w openWeatherMap) temperature(city string) (float64, error) {
-	res, error := http.Get("http://api.openweathermap.org/data/2.5/weather?APPID=" + w.apiKey + "&q=" + city)
-	if error != nil {
-		return 0, error
+	res, err := http.Get("http://api.openweathermap.org/data/2.5/weather?APPID=" + w.apiKey + "&q=" + city)
+	if err != nil {
+		return 0, err
 	}
 	defer res.Body.Close()
 	var data struct { // deconstruct the response and only pull out the temperature
@@ -81,8 +81,8 @@ func (w openWeatherMap) temperature(city string) (float64, error) {
 			Kelvin float64 `json:"temp"`
 		} `json:"main"`
 	}
-	if error := json.NewDecoder(res.Body).Decode(&data); error != nil {
-		return 0, error
+	if err := json.NewDecoder(res.Body).Decode(&data); err != nil {
+		return 0, err
 	}
 	log.Printf("openWeathermap: %s = %.2fK", city, data.Main.Kelvin)
 	return data.Main.Kelvin, nil
