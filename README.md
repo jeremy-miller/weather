@@ -10,6 +10,7 @@ This project is based on [this](http://howistart.org/posts/go/1/) tutorial.
 - [Usage](#usage)
   - [Prerequisites](#prerequisites)
   - [Build](#build)
+  - [Test](#test)
   - [Run](#run)
   - [Example Call](#example-call)
 - [License](#license)
@@ -25,6 +26,9 @@ This implementation uses a Docker container to isolate the execution environment
 
 ### Build
 Before interacting with the weather server, the Docker container must be built: ```docker build -t jeremymiller/weather .```
+
+### Test
+To run the Weather tests, execute the following command: ```docker run -it --rm jeremymiller/weather go test```
 
 ### Run
 1. Start the weather server by executing the following command: ```docker run -it --rm jeremymiller/weather```
