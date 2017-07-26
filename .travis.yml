@@ -10,4 +10,4 @@ before_install:
 script:
   - docker run -it --rm jeremymiller/weather go test
 after_success:
-  - $HOME/gopath/bin/goveralls -service=travis-pro
+  - $HOME/gopath/bin/goveralls -service=travis-ci  # doesn't run in docker
