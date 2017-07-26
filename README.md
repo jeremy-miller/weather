@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/jeremy-miller/weather.svg?branch=master)](https://travis-ci.org/jeremy-miller/weather)
+[![Coverage Status](https://coveralls.io/repos/github/jeremy-miller/weather/badge.svg?branch=master)](https://coveralls.io/github/jeremy-miller/weather?branch=master)
 [![Code Climate](https://codeclimate.com/github/jeremy-miller/weather/badges/gpa.svg)](https://codeclimate.com/github/jeremy-miller/weather)
 [![MIT Licensed](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/jeremy-miller/weather/blob/master/LICENSE)
 [![Go Version](https://img.shields.io/badge/Go-1.8-blue.svg)]()
