@@ -1,10 +1,13 @@
+language: go
 sudo: required
+go:
+  - 1.8
 services:
   - docker
 before_install:
   - docker build -t jeremymiller/weather .
-  - docker run -it --rm jeremymiller/weather go get github.com/mattn/goveralls
+  - go get github.com/mattn/goveralls
 script:
   - docker run -it --rm jeremymiller/weather go test
 after_success:
-  - docker run -it --rm jeremymiller/weather goveralls -repotoken $COVERALLS_REPO_TOKEN
+  - $HOME/gopath/bin/goveralls -service=travis-pro -repotoken $COVERALLS_REPO_TOKEN
