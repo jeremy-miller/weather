@@ -18,7 +18,7 @@ This project is based on [this](http://howistart.org/posts/go/1/) tutorial.
 - [License](#license)
 
 ## Motivation
-I created this project to learn Go.
+I created this project to try Go.
 
 ## Usage
 This implementation uses a Docker container to isolate the execution environment.
