@@ -8,6 +8,8 @@ before_install:
   - docker build -t jeremymiller/weather .
   - go get github.com/mattn/goveralls
 script:
+  - docker run -it --rm jeremymiller/weather go tool vet *.go
+  - docker run -it --rm jeremymiller/weather golint
   - docker run -it --rm jeremymiller/weather go test
 after_success:
   - $HOME/gopath/bin/goveralls -service=travis-ci  # doesn't run in docker
