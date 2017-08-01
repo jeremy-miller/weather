@@ -34,7 +34,9 @@ This implementation uses a Docker container to isolate the execution environment
 Before interacting with the weather server, the Docker container must be built: ```docker build -t jeremymiller/weather .```
 
 ### Static Code Analysis
+To run the [vet](https://golang.org/cmd/vet/) static code analysis tool, execute the following command: ```docker run -it --rm jeremymiller/weather go tool vet *.go```
 
+To run the [golint](https://github.com/golang/lint) code linter, execute the following command: ```docker run -it --rm jeremymiller/weather golint```
 
 ### Test
 To run the Weather tests, execute the following command: ```docker run -it --rm jeremymiller/weather go test```
