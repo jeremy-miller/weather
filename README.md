@@ -7,19 +7,16 @@
 API server for retrieving the weather of a particular city.
 This project is based on [this](http://howistart.org/posts/go/1/) tutorial.
 
-<details>
-<summary><strong>Table of Contents</strong></summary>
-
-* [Motivation](#motivation)
-* [Usage](#usage)
-  + [Prerequisites](#prerequisites)
-  + [Build](#build)
-  + [Static Code Analysis](#static-code-analysis)
-  + [Test](#test)
-  + [Run](#run)
-  + [Example Call](#example-call)
-* [License](#license)
-</details>
+## Table of Contents
+- [Motivation](#motivation)
+- [Usage](#usage)
+  - [Prerequisites](#prerequisites)
+  - [Build](#build)
+  - [Static Code Analysis](#static-code-analysis)
+  - [Test](#test)
+  - [Run](#run)
+  - [Example Call](#example-call)
+- [License](#license)
 
 ## Motivation
 I created this project to try Go.
